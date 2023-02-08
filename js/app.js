@@ -40,6 +40,23 @@
 
 // build the nav
 
+function buildNav() {    
+    const navbarList = document.getElementById('navbar__list');
+    const landingContainers = document.getElementsByClassName('landing__container');
+
+    const documentFragment = document.createDocumentFragment();
+
+    for (let i of landingContainers){
+        const newListItem = document.createElement('LI');
+        newListItem.className = `menu__link`;
+        newListItem.innerText = i.firstElementChild.innerText;
+
+        documentFragment.appendChild(newListItem);
+    }
+    navbarList.appendChild(documentFragment);
+}
+
+buildNav();
 
 // Add class 'active' to section when near top of viewport
 
