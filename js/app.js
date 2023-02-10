@@ -22,6 +22,8 @@
  * Define Global Variables
  * 
 */
+const sectionElements = document.getElementsByTagName('section');
+const navbarList = document.getElementById('navbar__list');
 
 
 /**
@@ -40,10 +42,7 @@
 
 // build the nav
 
-function buildNav() {    
-    const navbarList = document.getElementById('navbar__list');
-    const sectionElements = document.getElementsByTagName('section');
-
+function buildNav() {
     const documentFragment = document.createDocumentFragment();
 
     for (let i of sectionElements){
@@ -60,6 +59,7 @@ function buildNav() {
 // buildNav();
 
 // Add class 'active' to section when near top of viewport
+
 
 
 // Scroll to anchor ID using scrollTO event
