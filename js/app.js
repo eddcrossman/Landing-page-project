@@ -94,6 +94,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
 
 // Scroll to section on link click
+document.addEventListener('click', (event)=> {
+    event.preventDefault();
+    console.log(`Nav item clicked`);
+    console.log(event);
+    console.log(event.target);
+});
 
 // Set sections as active
 document.addEventListener('scroll', ()=> {
