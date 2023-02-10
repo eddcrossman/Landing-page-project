@@ -23,8 +23,8 @@
  * 
 */
 const sectionElements = document.getElementsByTagName('section');
-const navbarList = document.getElementById('navbar__list');
-
+const navbarListElement = document.getElementById('navbar__list');
+let listItemElements = [];
 
 /**
  * End Global Variables
@@ -49,9 +49,10 @@ function buildNav() {
         const newListItem = document.createElement('LI');        
 
         newListItem.innerHTML = `<a href='#${i.id}' class='menu__link'>${i.dataset.nav}</a>`;
+        listItemElements.push(newListItem);
         documentFragment.append(newListItem);
     }
-    navbarList.appendChild(documentFragment);
+    navbarListElement.appendChild(documentFragment);
 }
 
 // buildNav();
@@ -79,6 +80,7 @@ function scrollToSection(targetElement){
     console.log(targetElement);
     targetElement.scrollIntoView({behavior:'smooth'});
 }
+
 
 /**
  * End Main Functions
