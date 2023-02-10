@@ -49,7 +49,7 @@ function buildNav() {
         const newListItem = document.createElement('LI');
 
         newListItem.className = 'menu__link';
-        newListItem.innerHTML = i.dataset.nav;
+        newListItem.innerHTML = `<a>${i.dataset.nav}</a>`;
 
         documentFragment.append(newListItem);
     }
