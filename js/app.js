@@ -96,5 +96,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
 // Scroll to section on link click
 
 // Set sections as active
+document.addEventListener('scroll', ()=> {
+    console.log(`Scroll detected, updating active section`);
+    addClassToActiveSection();
+});
 
 
