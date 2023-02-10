@@ -48,7 +48,7 @@ function buildNav() {
     for (let i of sectionElements){
         const newListItem = document.createElement('LI');
 
-        newListItem.className = `menu__link`;
+        newListItem.className = 'menu__link';
         newListItem.innerHTML = i.dataset.nav;
 
         documentFragment.append(newListItem);
@@ -59,7 +59,22 @@ function buildNav() {
 // buildNav();
 
 // Add class 'active' to section when near top of viewport
+function addClassToActiveSection(){
+    let closestDistance;
+    let closestElement;
+    
+    for (let i of sectionElements){
+        let currentDistance = i.getBoundingClientRect().top;
+        if (closestDistance === undefined || currentDistance < Math.abs(closestDistance)) {
+            closestDistance = currentDistance;
+            closestElement = i;
+        }
 
+        i.classList.remove('active__section');
+    }
+
+    closestElement.classList.add('active__section');
+}
 
 
 // Scroll to anchor ID using scrollTO event
@@ -73,8 +88,8 @@ function buildNav() {
 
 // Build menu 
 document.addEventListener('DOMContentLoaded', ()=> {
-    console.log('DOM loaded, building the NAV');
-    buildNav()
+    console.log(`DOM loaded, building the NAV`);
+    buildNav();
 });
 
 
