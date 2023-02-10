@@ -42,16 +42,17 @@
 
 function buildNav() {    
     const navbarList = document.getElementById('navbar__list');
-    const landingContainers = document.getElementsByClassName('landing__container');
+    const sectionElements = document.getElementsByTagName('section');
 
     const documentFragment = document.createDocumentFragment();
 
-    for (let i of landingContainers){
+    for (let i of sectionElements){
         const newListItem = document.createElement('LI');
-        newListItem.className = `menu__link`;
-        newListItem.innerText = i.firstElementChild.innerText;
 
-        documentFragment.appendChild(newListItem);
+        newListItem.className = `menu__link`;
+        newListItem.innerHTML = i.dataset.nav;
+
+        documentFragment.append(newListItem);
     }
     navbarList.appendChild(documentFragment);
 }
@@ -71,6 +72,8 @@ buildNav();
 */
 
 // Build menu 
+
+
 
 // Scroll to section on link click
 
