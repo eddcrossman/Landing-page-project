@@ -57,7 +57,7 @@ function buildNav() {
     navbarList.appendChild(documentFragment);
 }
 
-buildNav();
+// buildNav();
 
 // Add class 'active' to section when near top of viewport
 
@@ -72,7 +72,10 @@ buildNav();
 */
 
 // Build menu 
-
+document.addEventListener('DOMContentLoaded', ()=> {
+    console.log('DOM loaded, building the NAV');
+    buildNav()
+});
 
 
 // Scroll to section on link click
