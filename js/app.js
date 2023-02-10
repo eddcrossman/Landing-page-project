@@ -46,11 +46,9 @@ function buildNav() {
     const documentFragment = document.createDocumentFragment();
 
     for (let i of sectionElements){
-        const newListItem = document.createElement('LI');
+        const newListItem = document.createElement('LI');        
 
-        newListItem.className = 'menu__link';
-        newListItem.innerHTML = `<a>${i.dataset.nav}</a>`;
-
+        newListItem.innerHTML = `<a href='#${i.id}' class='menu__link'>${i.dataset.nav}</a>`;
         documentFragment.append(newListItem);
     }
     navbarList.appendChild(documentFragment);
@@ -95,7 +93,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
 // Scroll to section on link click
 document.addEventListener('click', (event)=> {
-    event.preventDefault();
+   // event.preventDefault();
     console.log(`Nav item clicked`);
     console.log(event);
     console.log(event.target);
