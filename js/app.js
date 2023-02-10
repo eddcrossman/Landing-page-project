@@ -90,13 +90,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
     buildNav();
 });
 
-
 // Scroll to section on link click
 document.addEventListener('click', (event)=> {
-   // event.preventDefault();
-    console.log(`Nav item clicked`);
-    console.log(event);
-    console.log(event.target);
+    const elementClicked = event.target;
+
+    if (event.target.classList.contains('menu__link') === true){
+        console.log(`Nav item clicked`);
+        event.preventDefault();
+        scrollToSection(elementClicked);
+    }
 });
 
 // Set sections as active
@@ -104,5 +106,3 @@ document.addEventListener('scroll', ()=> {
     console.log(`Scroll detected, updating active section`);
     addClassToActiveSection();
 });
-
-
