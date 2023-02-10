@@ -75,13 +75,10 @@ function addClassToActiveSection(){
 }
 
 // Scroll to anchor ID using scrollTO event
-function scrollToSection(elementClicked){
-    const targetElement = document.querySelector(elementClicked.attributes.href.nodeValue);
-
+function scrollToSection(targetElement){
     console.log(targetElement);
     targetElement.scrollIntoView({behavior:'smooth'});
 }
-
 
 /**
  * End Main Functions
@@ -101,7 +98,7 @@ document.addEventListener('click', (event)=> {
 
     if (event.target.classList.contains('menu__link') === true){
         event.preventDefault();
-        scrollToSection(elementClicked);
+        scrollToSection(document.querySelector(elementClicked.attributes.href.nodeValue));
     }
 });
 
