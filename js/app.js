@@ -25,6 +25,8 @@
 const sectionElements = document.getElementsByTagName('section');
 const navbarListElement = document.getElementById('navbar__list');
 let listItemElements = [];
+let navbarMenuTimeoutID;
+
 
 /**
  * End Global Variables
@@ -101,6 +103,7 @@ function scrollToSection(targetElement){
 document.addEventListener('DOMContentLoaded', ()=> {
     console.log(`DOM loaded, building the NAV`);
     buildNav();
+
 });
 
 // Scroll to section on link click
@@ -117,4 +120,15 @@ document.addEventListener('click', (event)=> {
 document.addEventListener('scroll', ()=> {
     console.log(`Scroll detected, updating active section`);
     addClassToActiveSection();
+
+    const navbarMenuElement = document.querySelector('.navbar__menu');
+    navbarMenuElement.style.display ='block';
+
+    if (navbarMenuTimeoutID) {
+        clearTimeout(navbarMenuTimeoutID);}
+
+    navbarMenuTimeoutID = setTimeout(()=>{
+        if (window.scrollY > 100 ) {
+            navbarMenuElement.style.display ='none';}
+    },5000);
 });
