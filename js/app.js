@@ -118,17 +118,19 @@ document.addEventListener('click', (event)=> {
 
 // Set sections as active
 document.addEventListener('scroll', ()=> {
+    const headerElement = document.querySelector('.page__header');
+
     console.log(`Scroll detected, updating active section`);
     addClassToActiveSection();
-
-    const navbarMenuElement = document.querySelector('.navbar__menu');
-    navbarMenuElement.style.display ='block';
+    headerElement.git adclassList.remove('header__hidden')
 
     if (navbarMenuTimeoutID) {
         clearTimeout(navbarMenuTimeoutID);}
 
     navbarMenuTimeoutID = setTimeout(()=>{
         if (window.scrollY > 100 ) {
-            navbarMenuElement.style.display ='none';}
+           // navbarMenuElement.style.display ='none';
+           headerElement.classList.add('header__hidden');
+        }
     },5000);
 });
