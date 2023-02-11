@@ -48,9 +48,13 @@ function buildNav() {
     const documentFragment = document.createDocumentFragment();
 
     for (let i of sectionElements){
-        const newListItem = document.createElement('LI');        
+        const newListItem = document.createElement('LI');
 
         newListItem.innerHTML = `<a href='#${i.id}' class='menu__link'>${i.dataset.nav}</a>`;
+
+        if(i.classList.contains('active__section')) {
+            newListItem.firstChild.classList.add('active__link');}
+
         listItemElements.push(newListItem.firstChild);
         documentFragment.append(newListItem);
     }
@@ -103,7 +107,6 @@ function scrollToSection(targetElement){
 document.addEventListener('DOMContentLoaded', ()=> {
     console.log(`DOM loaded, building the NAV`);
     buildNav();
-
 });
 
 // Scroll to section on link click
@@ -122,7 +125,7 @@ document.addEventListener('scroll', ()=> {
 
     console.log(`Scroll detected, updating active section`);
     addClassToActiveSection();
-    headerElement.git adclassList.remove('header__hidden')
+    headerElement.classList.remove('header__hidden');
 
     if (navbarMenuTimeoutID) {
         clearTimeout(navbarMenuTimeoutID);}
