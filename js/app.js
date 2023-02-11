@@ -49,7 +49,7 @@ function buildNav() {
         const newListItem = document.createElement('LI');        
 
         newListItem.innerHTML = `<a href='#${i.id}' class='menu__link'>${i.dataset.nav}</a>`;
-        listItemElements.push(newListItem);
+        listItemElements.push(newListItem.firstChild);
         documentFragment.append(newListItem);
     }
     navbarListElement.appendChild(documentFragment);
@@ -60,19 +60,28 @@ function buildNav() {
 // Add class 'active' to section when near top of viewport
 function addClassToActiveSection(){
     let closestDistance;
-    let closestElement;
-    
-    for (let i of sectionElements){
-        let currentDistance = i.getBoundingClientRect().top;
-        if (closestDistance === undefined || currentDistance < Math.abs(closestDistance)) {
-            closestDistance = currentDistance;
-            closestElement = i;
-        }
+    let closestElementIndex;
+    let currentActiveElementIndex;
 
-        i.classList.remove('active__section');
+    for (let i = 0; i < sectionElements.length; i++){
+        let currentDistance = sectionElements[i].getBoundingClientRect().top;
+
+        if (closestDistance === undefined || currentDistance < Math.abs(closestDistance)){
+            closestDistance = currentDistance;
+            closestElementIndex = i;
+        }
+        if (sectionElements[i].classList.contains('active__section')){
+            currentActiveElementIndex = i;
+        }
     }
 
-    closestElement.classList.add('active__section');
+    if (closestElementIndex !== currentActiveElementIndex){
+        sectionElements[currentActiveElementIndex].classList.remove('active__section');
+        listItemElements[currentActiveElementIndex].classList.remove('active__link');
+
+        sectionElements[closestElementIndex].classList.add('active__section');
+        listItemElements[closestElementIndex].classList.add('active__link');        
+    }
 }
 
 // Scroll to anchor ID using scrollTO event
