@@ -64,9 +64,6 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
-/* .navbar__menu {
-    display: block;
-} */
 
 .navbar__menu ul {
     padding-left: 0;
@@ -124,10 +121,18 @@ section {
     color: #fff;
 }
 
-.top__link{
+.top__link, .top__link:visited{
     position:fixed;
-    bottom: 0;
-    right: 0;
+    bottom: 20px;
+    right: 15px;
+    display: none;
+    transform: rotate(-90deg);
+    background: rgba(0,13,60,1);
+    padding: 0px 15px;
+    font-family: 'Oxygen', Sans-Serif;
+    font-size: 3em;
+    color: #fff;
+    text-decoration: none;
 }
 
 
