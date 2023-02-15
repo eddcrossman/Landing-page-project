@@ -61,8 +61,6 @@ function buildNav() {
     navbarListElement.appendChild(documentFragment);
 }
 
-// buildNav();
-
 // Add class 'active' to section when near top of viewport
 function addClassToActiveSection(){
     let closestDistance;
@@ -92,9 +90,20 @@ function addClassToActiveSection(){
 
 // Scroll to anchor ID using scrollTO event
 function scrollToSection(targetElement){
-    console.log(targetElement);
-    targetElement.scrollIntoView({behavior:'smooth'});
+    let sectionYCoord = window.scrollY * -1;
+
+    if (targetElement) {
+        sectionYCoord = targetElement.getBoundingClientRect().top;
+    }
+
+    window.scrollBy({
+        top: sectionYCoord,
+        left: 0,
+        behavior: 'smooth'
+    });
 }
+
+
 
 
 /**
@@ -113,7 +122,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 document.addEventListener('click', (event)=> {
     const elementClicked = event.target;
 
-    if (event.target.classList.contains('menu__link') === true){
+    if (event.target.classList.contains('menu__link') || event.target.classList.contains('top__link') === true){
         event.preventDefault();
         scrollToSection(document.querySelector(elementClicked.attributes.href.nodeValue));
     }
@@ -122,8 +131,8 @@ document.addEventListener('click', (event)=> {
 // Set sections as active
 document.addEventListener('scroll', ()=> {
     const headerElement = document.querySelector('.page__header');
+    const backToTopElement = document.querySelector('.top__link');
 
-    console.log(`Scroll detected, updating active section`);
     addClassToActiveSection();
     headerElement.classList.remove('header__hidden');
 
@@ -131,9 +140,14 @@ document.addEventListener('scroll', ()=> {
         clearTimeout(navbarMenuTimeoutID);}
 
     navbarMenuTimeoutID = setTimeout(()=>{
-        if (window.scrollY > 100 ) {
-           // navbarMenuElement.style.display ='none';
+        if (window.scrollY >= 100 ) {
            headerElement.classList.add('header__hidden');
         }
     },5000);
+
+    // Test if window is scrolled beyond first screen.  If so show link for navigation back to the top.
+    if (window.scrollY >= window.innerHeight) {
+        backToTopElement.style.display = 'block'; }
+    else {
+        backToTopElement.style.display = 'none'; }
 });

@@ -124,6 +124,12 @@ section {
     color: #fff;
 }
 
+.top__link{
+    position:fixed;
+    bottom: 0;
+    right: 0;
+}
+
 
 /* ---- Theme Rules ---- */
 /* Landing Container Styles */
