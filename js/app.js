@@ -134,20 +134,29 @@ document.addEventListener('scroll', ()=> {
     const backToTopElement = document.querySelector('.top__link');
 
     addClassToActiveSection();
-    headerElement.classList.remove('header__hidden');
+    headerElement.classList.remove('element__hidden');
 
     if (navbarMenuTimeoutID) {
         clearTimeout(navbarMenuTimeoutID);}
 
     navbarMenuTimeoutID = setTimeout(()=>{
         if (window.scrollY >= 100 ) {
-           headerElement.classList.add('header__hidden');
+           headerElement.classList.add('element__hidden');
         }
     },5000);
 
     // Test if window is scrolled beyond first screen.  If so show link for navigation back to the top.
-    if (window.scrollY >= window.innerHeight) {
-        backToTopElement.style.display = 'block'; }
-    else {
-        backToTopElement.style.display = 'none'; }
+    // if (window.scrollY >= window.innerHeight) {
+    //     backToTopElement.style.display = 'block'; }
+    // else {
+    //     backToTopElement.style.display = 'none'; }
+
+        if (window.scrollY >= window.innerHeight) {
+            backToTopElement.classList.remove('element__hidden');
+            backToTopElement.classList.add('element__visible');
+        }
+        else {
+            backToTopElement.classList.remove('element__visible');
+            backToTopElement.classList.add('element__hidden');
+        }
 });

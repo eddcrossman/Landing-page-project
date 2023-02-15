@@ -104,12 +104,6 @@ section {
     z-index: 5;
 }
 
-.header__hidden {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 2s, opacity 2s;
-}
-
 /* Footer Styles */
 .page__footer {
     background: #000;
@@ -125,7 +119,7 @@ section {
     position:fixed;
     bottom: 20px;
     right: 15px;
-    display: none;
+    /* display: none; */
     transform: rotate(-90deg);
     background: rgba(0,13,60,1);
     padding: 0px 15px;
@@ -133,6 +127,18 @@ section {
     font-size: 3em;
     color: #fff;
     text-decoration: none;
+}
+
+.element__visible {
+    visibility: visible;
+    opacity: 100;
+    transition: visibility 2s, opacity 2s;
+}
+
+.element__hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 2s, opacity 2s;
 }
 
 
