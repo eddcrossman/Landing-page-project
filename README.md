@@ -2,12 +2,23 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Table of contents](#table-of-contents)
+* [Project description](#project-description)
+* [Usage](#usage)
+* [Dependencies](#dependencies)
 
-## Instructions
+## Project description
+[(Back to top)](#table-of-contents)
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+The aim of the project was to build a multi-section landing page, a framework of html and css was provided.  I wrote the javascript code to dynamically build the navigation menu from sections present in that html.  Any sections added to or removed from the main html will have corresponding links dynamically added to the menu when the page is refreshed.  As the user navigates the page the section closest to the top of the page is detected, the section and the corresponding menu link are highlighted.  When the user is not scrolling the navigation menu is hidden other than when the page is scrolled to the very top.  When the user has scrolled beyond the first screen a link is displayed allowing them to jump back to the top of the page.
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Usage
+[(Back to top)](#table-of-contents)
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+To run the project open `index.html` in your browser.  The sections can be navigated using the navigation menu links at the top of the page.  Any sections added to or removed from the main html will have corresponding links dynamically added to the menu when the page is refreshed.
+
+
+## Dependencies
+[(Back to top)](#table-of-contents)
+
+Google font [Merriweather](https://fonts.google.com/specimen/Merriweather) used for page text.  
